@@ -1,13 +1,9 @@
-"""
-cd OneDrive\Escritorio\Complejidad
-env\Scripts\activate
-py app.py
-"""
 from turtle import *
 
 
-CONSUMPTION_PER_HOUSEHOLD = 1
-CONSUMPTION_PER_FACTORY = 10
+CONSUMPTION_PER_HOUSEHOLD = 0.00185792
+CONSUMPTION_PER_FACTORY = 1.56
+
 
 setup(900, 900, 0, 0)
 speed(100)
@@ -198,7 +194,7 @@ def draw_flow(time):
 
 if __name__ == "__main__":
     print("Starting")
-    liters = 200
+    liters = 65
     total_houses = 1 #max value: 5
     total_factory = 5 #max value: 5
     time = waste_calculation(total_houses,total_factory, liters)
@@ -208,7 +204,13 @@ if __name__ == "__main__":
     draw_house(total_houses)
     draw_factory(total_factory)
     draw_flow(time)
-    texto = ' Capacidad total del sistema acuifero: {} \n Total de Casas: {} \n Total de Fabricas: {} \n Anios en los que se acaba el agua: {} \n'.format(liters,total_houses,total_factory,time)
+    texto = ' Capacidad total del sistema acuifero: {} \
+        \n Total de Casas: {} \
+        \n Total de Fabricas: {} \
+        \n Anios en los que se acaba el agua: {} \
+        \n Capacidad de la presa: {} *10^8\
+        \n Consumo domestico anual: {} *10^8\
+        \n  Consumo domestico industrial: {}'.format(liters,total_houses,total_factory,time,liters,CONSUMPTION_PER_HOUSEHOLD,CONSUMPTION_PER_HOUSEHOLD)
 
     penup()
     goto(300,0)
